@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1> Hello, {{ user.username }}! </h1>
+<p>Υπάρχουν οι παρακάτω ανακοινώσεις:</p>
+<table border=1>
+    <tr><th>Υπηρεσία</th><th>Θέμα</th></tr>
+    {% for announcement in announcements %}
+    <tr>
+        <td>{{ announcement.department }}</td>
+        <td>{{ announcement.subject }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
