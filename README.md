@@ -2,3 +2,5 @@
 ## Εισαγωγή στο Flask
 
 Εφαρμογή που αναπτύσεται κατά τη διάρκεια των διαλέξεων
+
+Η εφαρμογή είναι διαθέσιμη [online](https://christodoulos-fragkoudakis.herokuapp.com/) στην υπηρεσία Python Hosting του Heroku
