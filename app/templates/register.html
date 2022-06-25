@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block content %}
+
+<h1 class="font-bold text-xl">Register</h1>
+<form action="" method="post" novalidate class="p-2 border">
+  {{ form.hidden_tag() }}
+  <table>
+    <tr>
+      <td class="font-bold text-right">{{ form.username.label }}</td>
+      <td>{{ form.username(class_="w-64 p-2 ml-2 border")}}</td>
+    </tr>
+    <tr>
+      <td class="font-bold text-right">{{ form.password.label }}</td>
+      <td>{{ form.password(class_="w-64 p-2 ml-2 border")}}</td>
+    </tr>
+    <tr>
+      <td class="font-bold text-right">{{ form.confirm.label }}</td>
+      <td>{{ form.confirm(class_="w-64 p-2 ml-2 border")}}</td>
+    </tr>
+    <tr>
+      <td class="font-bold text-right">{{ form.givenname.label }}</td>
+      <td>{{ form.givenname(class_="w-64 p-2 ml-2 border")}}</td>
+    </tr>
+    <tr>
+      <td class="font-bold text-right">{{ form.surname.label }}</td>
+      <td>{{ form.surname(class_="w-64 p-2 ml-2 border")}}</td>
+    </tr>
+    <tr>
+      <td class="font-bold text-right">{{ form.email.label }}</td>
+      <td>{{ form.email(class_="w-64 p-2 ml-2 border")}}</td>
+    </tr>
+    <tr>
+      <td class="font-bold text-right">{{ form.category.label }}</td>
+      <td>{{ form.category(class_="w-64 p-2 ml-2 border")}}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        {{ form.submit(class_="p-2 ml-2 text-white bg-indigo-500
+        hover:font-bold") }}
+      </td>
+    </tr>
+  </table>
+</form>
+
+{% endblock %}
