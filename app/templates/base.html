@@ -10,27 +10,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="flex flex-col justify-center items-center h-screen">
-    <div class="w-3/4">
-      <div class="flex justify-between bg-indigo-500 p-2">
-        <div class="text-white font-semibold">Announcements App</div>
-        <div>
-          <a class="hover:text-white" href="/index">Home</a>
-          <a class="hover:text-white" href="/login">Login</a>
-          <a class="hover:text-white" href="/register">Register</a>
+  <body class="p-20">
+    <div
+      class="w-3/4 flex flex-col justify-center items-center border bg-gray-200"
+    >
+      <div class="w-full flex justify-between bg-indigo-500 p-2 items-center">
+        <div class="text-white font-semibold text-2xl">Ανακοινώσεις</div>
+        <div class="w-1/2 flex justify-around">
+          <a class="font-semibold text-gray-800 hover:text-white" href="/index">Κεντρική σελίδα</a>
+          <a class="font-semibold text-gray-800 hover:text-white" href="/login">Είσοδος</a>
+          <a class="font-semibold text-gray-800 hover:text-white" href="/register">Εγγραφή</a>
         </div>
       </div>
 
-      <div>
-        <hr />
+      {% with errors = get_flashed_messages(category_filter=["error"]) %}
+        {% if errors %} 
+          <div class="bg-red-200 p-2 mt-2 mb-2 border">
+            <ul class="p-4">
+              {% for message in errors %}
+              <li class="list-disc">{{ message }} </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endwith %} 
 
-        {% with messages = get_flashed_messages() %} {% if messages %}
-        <ul>
-          {% for message in messages %}
-          <li>{{ message }}</li>
-          {% endfor %}
-        </ul>
-        {% endif %} {% endwith %} {% block content %} {% endblock %}
+      {% with infos = get_flashed_messages(category_filter=["info"]) %}
+        {% if infos %} 
+          <div class="bg-green-200 p-2 mt-2 mb-2 border">
+            <ul class="p-4">
+              {% for message in infos %}
+              <li class="list-disc">{{ message }} </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endwith %} 
+
+      
+      <div class="flex flex-col items-center justify-center">
+        {% block content %} {% endblock %}
       </div>
     </div>
   </body>

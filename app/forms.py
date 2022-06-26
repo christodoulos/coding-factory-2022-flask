@@ -8,24 +8,24 @@ from wtforms.validators import (
 
 
 class LoginForm(FlaskForm):
-    username = StringField("Username", validators=[DataRequired()])
-    password = PasswordField("Password", validators=[DataRequired()])
-    remember_me = BooleanField("Remember Me")
-    submit = SubmitField("Sign In")
+    username = StringField("Όνομα χρήστη", validators=[DataRequired()])
+    password = PasswordField("Κωδικός", validators=[DataRequired()])
+    remember_me = BooleanField("Αποθήκευση στοιχείων")
+    submit = SubmitField("Είσοδος")
 
 
 class RegisterForm(FlaskForm):
-    username = StringField("Username", validators=[DataRequired()])
+    username = StringField("Όνομα χρήστη", validators=[DataRequired()])
     email = EmailField("Email", validators=[DataRequired(), Email()])
-    category = StringField("Category", validators=[DataRequired()])
-    givenname = StringField("First Name", validators=[DataRequired()])
-    surname = StringField("Last Name", validators=[DataRequired()])
+    category = StringField("Κατηγορία προσωπικού", validators=[DataRequired()])
+    givenname = StringField("Όνομα", validators=[DataRequired()])
+    surname = StringField("Επώνυμο", validators=[DataRequired()])
     password = PasswordField(
-        "Password",
+        "Κωδικός",
         validators=[
             DataRequired(),
             EqualTo("confirm", message="Passwords must match"),
         ],
     )
-    confirm = PasswordField("Repeat Password")
-    submit = SubmitField("Register")
+    confirm = PasswordField("Επανάληψη κωδικού")
+    submit = SubmitField("Εγγραφή")

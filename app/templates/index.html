@@ -1,16 +1,22 @@
-{% extends "base.html" %} {% block content %}
-<h1>Hello, {{ user.username }}!</h1>
-<p>Υπάρχουν οι παρακάτω ανακοινώσεις:</p>
-<table class="w-full text-sm text-left">
-  <tr class="bg-gray-300">
-    <th class="p-2">Υπηρεσία</th>
-    <th class="p-2">Θέμα</th>
-  </tr>
-  {% for announcement in announcements %}
-  <tr class="border-b">
-    <td class="p-2">{{ announcement.department }}</td>
-    <td class="p-2">{{ announcement.subject }}</td>
-  </tr>
-  {% endfor %}
-</table>
+{% extends "base.html" %} 
+
+{% block content %}
+
+  <h1>Hello, {{ user.username }}!</h1>
+
+  <p>Υπάρχουν οι παρακάτω ανακοινώσεις:</p>
+
+  <table class="w-full text-sm text-left bg-gray-100 mt-2 mb-2">
+    <tr class="bg-gray-300">
+      <th class="p-2">Υπηρεσία</th>
+      <th class="p-2">Θέμα</th>
+    </tr>
+    {% for announcement in announcements %}
+    <tr class="border-b">
+      <td class="p-2">{{ announcement.department }}</td>
+      <td class="p-2">{{ announcement.subject }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
 {% endblock %}

@@ -26,10 +26,14 @@ def index():
 @announcements_app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
-    if form.validate_on_submit():
-        flash(f"Login requested for user {form.username.data}")
-        flash(f"remember_me={form.remember_me.data}")
-        return redirect("/index")
+    if request.method == "POST":
+        if form.validate_on_submit():
+            flash(f"Login requested for user {form.username.data}", "info")
+            flash(f"remember_me={form.remember_me.data}", "info")
+            return redirect("/index")
+        else:
+            for field, error in form.errors.items():
+                flash(f"Error in {field}: {error[0]}", "error")
     return render_template("login.html", title="Sign In", form=form)
 
 
@@ -38,7 +42,7 @@ def register():
     form = RegisterForm()
     if request.method == "POST":
         if form.validate_on_submit():
-            flash(f"Form data: {form.data}")
+            flash(f"Form data: {form.data}", "info")
             User(
                 username=form.username.data,
                 password=form.password.data,
@@ -48,5 +52,6 @@ def register():
             ).save()
             return redirect("/index")
         else:
-            flash(f"Form data invalid: {form.errors}")
+            for field, error in form.errors.items():
+                flash(f"Error in {field}: {error[0]}", "error")
     return render_template("register.html", title="Register", form=form)
