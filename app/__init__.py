@@ -9,3 +9,7 @@ db = MongoEngine(announcements_app)
 bcrypt = Bcrypt(announcements_app)
 
 from app import routes
+
+from app.user.routes import user
+
+announcements_app.register_blueprint(user, url_prefix="/user")

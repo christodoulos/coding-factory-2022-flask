@@ -1,7 +1,6 @@
 from flask import redirect, render_template, flash, request
 from app import announcements_app
-from app.forms import LoginForm, RegisterForm
-from app.models import User
+from app.forms import LoginForm
 
 
 @announcements_app.route("/")
@@ -35,23 +34,3 @@ def login():
             for field, error in form.errors.items():
                 flash(f"Error in {field}: {error[0]}", "error")
     return render_template("login.html", title="Sign In", form=form)
-
-
-@announcements_app.route("/register", methods=["GET", "POST"])
-def register():
-    form = RegisterForm()
-    if request.method == "POST":
-        if form.validate_on_submit():
-            flash(f"Form data: {form.data}", "info")
-            User(
-                username=form.username.data,
-                password=form.password.data,
-                email=form.email.data,
-                category={"name": form.category.data},
-                name={"surName": form.surname.data, "givenName": form.givenname.data},
-            ).save()
-            return redirect("/index")
-        else:
-            for field, error in form.errors.items():
-                flash(f"Error in {field}: {error[0]}", "error")
-    return render_template("register.html", title="Register", form=form)
