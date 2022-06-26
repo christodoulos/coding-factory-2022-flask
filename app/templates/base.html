@@ -17,9 +17,14 @@
       <div class="w-full flex justify-between bg-indigo-500 p-2 items-center">
         <div class="text-white font-semibold text-2xl">Ανακοινώσεις</div>
         <div class="w-1/2 flex justify-around">
-          <a class="font-semibold text-gray-800 hover:text-white" href="/index">Κεντρική σελίδα</a>
-          <a class="font-semibold text-gray-800 hover:text-white" href="/login">Είσοδος</a>
-          <a class="font-semibold text-gray-800 hover:text-white" href="{{ url_for('user.register_new_user') }}">Εγγραφή</a>
+          <a class="font-semibold text-gray-800 hover:text-white" href=" {{ url_for('index') }}">Κεντρική σελίδα</a>
+          {% if current_user.is_anonymous %}
+            <a class="font-semibold text-gray-800 hover:text-white" href="{{ url_for('login') }}">Είσοδος</a>
+            <a class="font-semibold text-gray-800 hover:text-white" href="{{ url_for('user.register_new_user') }}">Εγγραφή</a>
+          {% else %}
+            <a class="font-semibold text-gray-800 hover:text-white" href="{{ url_for('user.user_profile') }}">Προφίλ</a>
+            <a class="font-semibold text-gray-800 hover:text-white" href="{{ url_for('logout') }}">Έξοδος</a>
+          {% endif %}
         </div>
       </div>
 
@@ -37,7 +42,7 @@
 
       {% with infos = get_flashed_messages(category_filter=["info"]) %}
         {% if infos %} 
-          <div class="bg-green-200 p-2 mt-2 mb-2 w-3/4 border">
+          <div class="bg-green-200 p-2 mt-2 mb-2 w-3/4 border overflow-hidden">
             <ul class="p-4">
               {% for message in infos %}
               <li class="list-disc">{{ message }} </li>
