@@ -19,7 +19,7 @@
         <div class="w-1/2 flex justify-around">
           <a class="font-semibold text-gray-800 hover:text-white" href="/index">Κεντρική σελίδα</a>
           <a class="font-semibold text-gray-800 hover:text-white" href="/login">Είσοδος</a>
-          <a class="font-semibold text-gray-800 hover:text-white" href="/register">Εγγραφή</a>
+          <a class="font-semibold text-gray-800 hover:text-white" href="{{ url_for('user.register_new_user') }}">Εγγραφή</a>
         </div>
       </div>
 
@@ -37,7 +37,7 @@
 
       {% with infos = get_flashed_messages(category_filter=["info"]) %}
         {% if infos %} 
-          <div class="bg-green-200 p-2 mt-2 mb-2 border">
+          <div class="bg-green-200 p-2 mt-2 mb-2 w-3/4 border">
             <ul class="p-4">
               {% for message in infos %}
               <li class="list-disc">{{ message }} </li>
