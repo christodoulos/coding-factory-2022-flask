@@ -1,17 +1,33 @@
-{% extends "base.html" %} {% block content %}
-<h1>Είσοδος</h1>
-<form action="" method="post" novalidate>
-  {{ form.hidden_tag() }}
-  <p>
-    {{ form.username.label}} <br />
-    {{ form.username(size=32)}}
-  </p>
-  <p>
-    {{ form.password.label}} <br />
-    {{ form.password(size=32)}}
-  </p>
-  <p>{{ form.remember_me() }} {{ form.remember_me.label}}</p>
-  <p>{{ form.submit() }}</p>
-</form>
+{% extends "base.html" %} 
+
+{% block content %}
+
+<div class="p-2 flex flex-col items-center justify-center">
+  <h1 class="font-bold text-xl">Είσοδος</h1>
+  <form action="" method="post" novalidate class="p-2 border">
+    {{ form.hidden_tag() }}
+    <table>
+      <tr>
+        <td class="font-bold text-right">{{ form.username.label }}</td>
+        <td>{{ form.username(class_="w-64 p-2 ml-2 border")}}</td>
+      </tr>
+      <tr>
+        <td class="font-bold text-right">{{ form.password.label }}</td>
+        <td>{{ form.password(class_="w-64 p-2 ml-2 border")}}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td class="p-2 mt-2">{{ form.remember_me() }} <span class="ml-2">{{ form.remember_me.label}}</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          {{ form.submit(class_="p-2 ml-2 mt-2 text-white bg-indigo-500
+          hover:font-bold cursor-pointer") }}
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
 
 {% endblock %}
