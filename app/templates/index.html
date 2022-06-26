@@ -1,22 +1,27 @@
 {% extends "base.html" %} 
 
 {% block content %}
+<div>
+  <h1 class="font-semibold text-xl mt-2">Εφαρμογή ηλεκτρονικών ανακοινώσεων</h1>
 
-  <h1>Hello, {{ user.username }}!</h1>
+  {% if current_user.is_anonymous %}
+    <p class="mb-2"><a class="text-indigo-500 hover:underline" href="{{ url_for('login') }}">Συνδεθείτε</a> για να δείτε τις ανακοινώσεις.</p>
+  {% else %}
+    <p>Συνδεδεμένος χρήστης (username): <span class="font-semibold">{{ current_user.username }}</span></p>
+    <p>Υπάρχουν οι παρακάτω ανακοινώσεις:</p>
 
-  <p>Υπάρχουν οι παρακάτω ανακοινώσεις:</p>
-
-  <table class="w-full text-sm text-left bg-gray-100 mt-2 mb-2">
-    <tr class="bg-gray-300">
-      <th class="p-2">Υπηρεσία</th>
-      <th class="p-2">Θέμα</th>
-    </tr>
-    {% for announcement in announcements %}
-    <tr class="border-b">
-      <td class="p-2">{{ announcement.department }}</td>
-      <td class="p-2">{{ announcement.subject }}</td>
-    </tr>
-    {% endfor %}
-  </table>
-
+    <table class="w-full text-sm text-left bg-gray-100 mt-2 mb-2">
+      <tr class="bg-gray-300">
+        <th class="p-2">Υπηρεσία</th>
+        <th class="p-2">Θέμα</th>
+      </tr>
+      {% for announcement in announcements %}
+      <tr class="border-b">
+        <td class="p-2">{{ announcement.department }}</td>
+        <td class="p-2">{{ announcement.subject }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
+</div>
 {% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %} 
+
+{% block content %}
+
+<div class="bg-gray-100 p-2 mt-2 mb-2 text-lg">
+    Πληροφορίες χρήστη <span class="font-semibold">{{ current_user.username }}</span>
+</div>
+
+<div class="flex flex-col space-y-2">
+    <div class="flex space-x-2">
+        <div class="font-semibold">Όνοματεπώνυμο</div>
+        <div>{{ current_user.name.givenName }}</div>
+        <div>{{ current_user.name.surName }}</div>
+    </div>
+    <div class="flex space-x-2">
+        <div class="font-semibold">Email</div>
+        <div>{{ current_user.email }}</div>
+    </div>
+    <div class="flex space-x-2">
+        <div class="font-semibold">Ιδιότητα</div>
+        <div>{{ current_user.category.name }}</div>
+    </div>
+</div>
+
+{% endblock %}

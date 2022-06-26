@@ -1,6 +1,7 @@
-from app import db, bcrypt
+from app import db, bcrypt, login_manager
 from bson.objectid import ObjectId
 import mongoengine as me
+from flask_login import UserMixin
 
 
 class UserCategory(db.EmbeddedDocument):
@@ -13,7 +14,7 @@ class Name(db.EmbeddedDocument):
     surName = db.StringField(required=True, min_length=1, max_length=20)
 
 
-class User(db.Document):
+class User(UserMixin, db.Document):
     username = db.StringField(required=True, unique=True, min_length=4, max_length=20)
     password = db.StringField(required=True, min_length=12, max_length=60)
     category = db.EmbeddedDocumentField(UserCategory, required=True)
@@ -27,6 +28,11 @@ class User(db.Document):
 
     def verify_password(self, password):
         return bcrypt.check_password_hash(self.password, password)
+
+
+@login_manager.user_loader
+def load_user(id):
+    return User.objects(id=id).first()
 
 
 me.signals.pre_save.connect(User.pre_save, sender=User)
