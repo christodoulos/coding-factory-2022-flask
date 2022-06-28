@@ -1,0 +1,17 @@
+Διαγράφει ένα χρήστη απο τη βάση δεδομένων
+---
+tags:
+  - Διαχείριση χρηστών
+
+parameters:
+  - name: username
+    in: path
+    required: true
+    schema:
+      type: string
+      description: Το username του χρήστη
+      example: christodoulos
+
+responses:
+  200:
+    description: The user's document

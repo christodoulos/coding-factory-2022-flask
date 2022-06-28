@@ -6,6 +6,7 @@
 
   {% if current_user.is_anonymous %}
     <p class="mb-2"><a class="text-indigo-500 hover:underline" href="{{ url_for('login') }}">Συνδεθείτε</a> για να δείτε τις ανακοινώσεις.</p>
+    <p class="mb-2">Τεμηρίωση του <a class="text-indigo-500 hover:underline" href="/apidocs">API</a> της εφαρμογής</p>
   {% else %}
     <p>Συνδεδεμένος χρήστης (username): <span class="font-semibold">{{ current_user.username }}</span></p>
     <p>Υπάρχουν οι παρακάτω ανακοινώσεις:</p>

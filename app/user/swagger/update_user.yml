@@ -1,0 +1,52 @@
+Ενημερώνει τα στοιχεία ενός χρήστη στη βάση δεδομένων
+---
+tags:
+  - Διαχείριση χρηστών
+
+parameters:
+  - name: username
+    in: path
+    required: true
+    schema:
+      type: string
+      description: The user's username
+      example: christodoulos
+  - name: user
+    in: body
+    schema:
+      type: object
+      properties:
+        category:
+          type: object
+          properties:
+            name:
+              type: string
+              maxLength: 30
+              description: category description
+              example: ΕΙΔΙΚΟ ΔΙΔΑΚΤΙΚΟ ΠΡΟΣΩΠΙΚΟ
+        name:
+          type: object
+          properties:
+            givenName:
+              type: string
+              maxLength: 50
+              description: User's first name
+              example: Χριστοδουλος
+            surName:
+              type: string
+              maxLength: 50
+              description: User's last name
+              example: Φραγκουδακης
+        email:
+          type: string
+          maxLength: 50
+          description: User's email
+          example: christodoulos@donot.spam.com
+
+responses:
+  200:
+    description: Ο χρήστης ενημερώθηκε επιτυχώς
+  400:
+    description: Εντοπίστηκε λάθος στην επικύρωση των στοιχείων
+  404:
+    description: Ο χρήστης δεν βρέθηκε
