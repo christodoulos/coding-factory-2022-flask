@@ -13,3 +13,9 @@ class Config:
         "host": environ.get("MONGODB_SETTINGS_HOST"),
         "db": environ.get("MONGODB_SETTINGS_DB"),
     }
+    MAIL_SERVER = "smtp.sendgrid.net"
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = "apikey"
+    MAIL_PASSWORD = environ.get("SENDGRID_API_KEY")
+    MAIL_DEFAULT_SENDER = environ.get("MAIL_DEFAULT_SENDER")

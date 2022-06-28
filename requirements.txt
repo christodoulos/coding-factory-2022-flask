@@ -8,6 +8,7 @@ email-validator==1.2.1
 Flask==2.1.2
 Flask-Bcrypt==1.0.1
 Flask-Login==0.6.1
+Flask-Mail==0.9.1
 flask-mongoengine==1.0.0
 Flask-WTF==1.0.1
 gunicorn==20.1.0
@@ -22,6 +23,9 @@ platformdirs==2.5.2
 pycparser==2.21
 pymongo==4.1.1
 python-dotenv==0.20.0
+python-http-client==3.3.7
+sendgrid==6.9.7
+starkbank-ecdsa==2.0.3
 tomli==2.0.1
 Werkzeug==2.1.2
 WTForms==3.0.1

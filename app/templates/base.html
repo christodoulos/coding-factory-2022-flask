@@ -16,7 +16,7 @@
     >
       <div class="w-full flex justify-between bg-indigo-500 p-2 items-center">
         <div class="text-white font-semibold text-2xl">Ανακοινώσεις</div>
-        <div class="w-1/2 flex justify-around">
+        <div class="w-1/2 flex justify-around whitespace-nowrap">
           <a class="font-semibold text-gray-800 hover:text-white" href=" {{ url_for('index') }}">Κεντρική σελίδα</a>
           {% if current_user.is_anonymous %}
             <a class="font-semibold text-gray-800 hover:text-white" href="{{ url_for('login') }}">Είσοδος</a>
