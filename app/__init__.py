@@ -3,6 +3,7 @@ from flask_mongoengine import MongoEngine
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
+from flasgger import Swagger
 from config import Config
 
 announcements_app = Flask(__name__)
@@ -11,6 +12,7 @@ db = MongoEngine(announcements_app)
 bcrypt = Bcrypt(announcements_app)
 login_manager = LoginManager(announcements_app)
 mail = Mail(announcements_app)
+swagger = Swagger(announcements_app)
 
 from app import routes
 

@@ -1,0 +1,56 @@
+Εισάγει νέο χρήστη στη βάση δεδομένων
+---
+tags:
+  - Διαχείριση χρηστών
+
+parameters:
+  - name: user
+    in: body
+    schema:
+      type: object
+      required: all
+      properties:
+        username:
+          type: string
+          maxLength: 50
+          description: Το username του χρήστη
+          example: christodoulos
+        password:
+          type: string
+          minLength: 12
+          maxLength: 50
+          description: Το password του χρήστη
+          example: longandcomplicatedstringwithmambojumbocharacters
+        category:
+          type: object
+          properties:
+            name:
+              type: string
+              maxLength: 30
+              description: Κατηγορία χρήστη
+              example: ΕΙΔΙΚΟ ΔΙΔΑΚΤΙΚΟ ΠΡΟΣΩΠΙΚΟ
+        name:
+          type: object
+          properties:
+            givenName:
+              type: string
+              maxLength: 50
+              description: Το όνομα του χρήστη
+              example: Χριστοδουλος
+            surName:
+              type: string
+              maxLength: 50
+              description: Το επώνυμο του χρήστη
+              example: Φραγκουδακης
+        email:
+          type: string
+          maxLength: 50
+          description: Το email του χρήστη
+          example: christodoulos@donot.spam.com
+
+responses:
+  201:
+    description: Ο χρήστης προστέθηκε με επιτυχία
+
+  400:
+    description: Εντοπίστηκε λάθος στην επικύρωση των στοιχείων

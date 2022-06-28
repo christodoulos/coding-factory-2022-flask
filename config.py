@@ -19,3 +19,4 @@ class Config:
     MAIL_USERNAME = "apikey"
     MAIL_PASSWORD = environ.get("SENDGRID_API_KEY")
     MAIL_DEFAULT_SENDER = environ.get("MAIL_DEFAULT_SENDER")
+    SWAGGER = {"title": "Coding Factory 2022 Python API", "uiversion": 3}

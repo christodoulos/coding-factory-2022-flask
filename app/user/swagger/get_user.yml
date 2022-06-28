@@ -1,0 +1,20 @@
+Αναζητά ένα χρήστη στη βάση δεδομένων
+---
+tags:
+  - Διαχείριση χρηστών
+
+parameters:
+  - name: username
+    in: path
+    required: true
+    schema:
+      type: string
+      description: Το username του χρήστη
+      example: christodoulos
+
+
+responses:
+  200:
+    description: Η εγγραφή του χρήστη
+  404:
+    description: Ο χρήστης δεν βρέθηκε
